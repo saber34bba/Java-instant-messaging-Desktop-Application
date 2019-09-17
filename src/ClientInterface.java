@@ -1,3 +1,9 @@
+
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.*;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +19,11 @@ public class ClientInterface extends javax.swing.JFrame {
     /**
      * Creates new form ClientInterface
      */
+    
+    static Socket socket;
+     static DataInputStream dataInputStream;
+    static DataOutputStream dataOutputStream;
+     
     public ClientInterface() {
         initComponents();
     }
