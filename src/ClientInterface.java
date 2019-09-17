@@ -40,15 +40,15 @@ public class ClientInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textarea = new javax.swing.JTextArea();
         textfield = new javax.swing.JTextField();
         sendbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textarea.setColumns(20);
+        textarea.setRows(5);
+        jScrollPane1.setViewportView(textarea);
 
         textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,9 +127,17 @@ public class ClientInterface extends javax.swing.JFrame {
         });
         
         try {
+            String msg="";
             socket=new Socket("127.0.0.1",1020);
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            
+            while(msg.equalsIgnoreCase("exit"))
+            {
+                msg=dataInputStream.readUTF();
+                textarea.setText(textarea.getText().trim()+"\n"+msg);
+            }
+            
         } catch (IOException ex) {
            // Logger.getLogger(ClientInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -137,8 +145,8 @@ public class ClientInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton sendbtn;
+    private static javax.swing.JTextArea textarea;
     private javax.swing.JTextField textfield;
     // End of variables declaration//GEN-END:variables
 }
