@@ -1,3 +1,9 @@
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +19,19 @@ public class ServerSide extends javax.swing.JFrame {
     /**
      * Creates new form ServerSide
      */
+    
+    
+      static ServerSocket serverSocket;
+    static Socket socket;
+    static DataInputStream dataInputStream;
+    static DataOutputStream dataOutputStream;
+    
+     /* private static void writeMessage(String message)
+        {
+                           textarea.setText(textarea.getText().trim()+"\n"+message);
+
+        }*/
+      
     public ServerSide() {
         initComponents();
     }
@@ -75,6 +94,26 @@ public class ServerSide extends javax.swing.JFrame {
                 new ServerSide().setVisible(true);
             }
         });
+          String msg="";
+        try{
+            
+            serverSocket=new ServerSocket(1020);
+            socket=serverSocket.accept();
+            dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            
+           /* while(msg.equalsIgnoreCase("cancle"))
+            {
+                msg=dataInputStream.readUTF();
+                
+                  writeMessage(msg);
+            }*/
+            
+            
+        }catch(Exception e)
+        {
+            
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
