@@ -1,4 +1,5 @@
 
+import java.awt.TextArea;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -25,6 +26,12 @@ public class ClientInterface extends javax.swing.JFrame {
     static DataInputStream dataInputStream;
     static DataOutputStream dataOutputStream;
     
+      private static void writeMessage(String message)
+        {
+                           textarea.setText(textarea.getText().trim()+"\n"+message);
+
+        }
+      
     
     public ClientInterface() {
         initComponents();
@@ -112,6 +119,7 @@ public class ClientInterface extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+      
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -131,7 +139,7 @@ public class ClientInterface extends javax.swing.JFrame {
             {
                 msg=dataInputStream.readUTF();
                 
-                
+                  writeMessage(msg);
             }
             
             
@@ -145,7 +153,7 @@ public class ClientInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Sendbtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea textarea;
+    private static javax.swing.JTextArea textarea;
     private javax.swing.JTextField textmsg;
     // End of variables declaration//GEN-END:variables
 }
