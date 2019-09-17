@@ -1,8 +1,10 @@
 
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -124,7 +126,13 @@ public class ClientInterface extends javax.swing.JFrame {
             }
         });
         
-        System.out.println("");
+        try {
+            socket=new Socket("127.0.0.1",1020);
+            dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        } catch (IOException ex) {
+           // Logger.getLogger(ClientInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

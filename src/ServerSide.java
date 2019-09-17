@@ -99,9 +99,9 @@ public class ServerSide extends javax.swing.JFrame {
             
             serverSocket=new ServerSocket(1020);
             socket=serverSocket.accept();
-            dataInputStream = new DataInputStream(socket.getInputStream());
+           /* dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
-            
+            */
            /* while(msg.equalsIgnoreCase("cancle"))
             {
                 msg=dataInputStream.readUTF();
