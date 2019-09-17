@@ -37,7 +37,6 @@ public class ClientInterface extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        textfield.setText("jTextField1");
         textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textfieldActionPerformed(evt);
@@ -113,6 +112,8 @@ public class ClientInterface extends javax.swing.JFrame {
                 new ClientInterface().setVisible(true);
             }
         });
+        
+        System.out.println("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
