@@ -57,6 +57,11 @@ public class ClientInterface extends javax.swing.JFrame {
         });
 
         sendbtn.setText("Send");
+        sendbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,6 +96,17 @@ public class ClientInterface extends javax.swing.JFrame {
     private void textfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textfieldActionPerformed
+
+    private void sendbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendbtnActionPerformed
+          
+        try {
+             String msg=textfield.getText().trim();
+            dataOutputStream.writeUTF(msg);
+            // TODO add your handling code here:
+        } catch (IOException ex) {
+            Logger.getLogger(ClientInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_sendbtnActionPerformed
 
     /**
      * @param args the command line arguments
